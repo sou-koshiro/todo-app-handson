@@ -1,0 +1,246 @@
+/* ========================================
+   リセット・ベーススタイル
+======================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  background-color: #f0f4f8;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+}
+
+/* ========================================
+   アプリ全体のレイアウト
+======================================== */
+.app {
+  width: 100%;
+  max-width: 600px;
+}
+
+/* ========================================
+   ヘッダー
+======================================== */
+.app-header {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.app-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2c5282;
+  letter-spacing: 0.05em;
+}
+
+/* ========================================
+   タスク入力フォーム
+======================================== */
+.task-form {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+}
+
+.task-form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.task-form-row {
+  display: flex;
+  gap: 8px;
+}
+
+.task-input {
+  flex: 1;
+  height: 44px;
+  padding: 0 12px;
+  border: 2px solid #cbd5e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.task-input:focus {
+  border-color: #4299e1;
+}
+
+.task-input::placeholder {
+  color: #a0aec0;
+}
+
+/* ========================================
+   ボタン
+======================================== */
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0 16px;
+  height: 44px;
+  transition: background-color 0.2s, opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.btn-add {
+  background-color: #4299e1;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.btn-edit {
+  background-color: #ecc94b;
+  color: #744210;
+  height: 32px;
+  padding: 0 12px;
+}
+
+.btn-delete {
+  background-color: #fc8181;
+  color: #742a2a;
+  height: 32px;
+  padding: 0 12px;
+}
+
+/* ========================================
+   タスク一覧セクション
+======================================== */
+.task-list-section {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.task-list-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ========================================
+   タスクアイテム
+======================================== */
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background-color: #f7fafc;
+  border: 1px solid #e2e8f0;
+  transition: background-color 0.2s;
+}
+
+.task-item:hover {
+  background-color: #ebf8ff;
+}
+
+/* 完了済みタスクのスタイル */
+.task-item.is-completed {
+  background-color: #f0fff4;
+  border-color: #c6f6d5;
+  opacity: 0.75;
+}
+
+.task-item.is-completed .task-text {
+  text-decoration: line-through;
+  color: #a0aec0;
+}
+
+/* ========================================
+   チェックボックス
+======================================== */
+.task-check {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.task-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.task-check-icon {
+  width: 22px;
+  height: 22px;
+  border: 2px solid #cbd5e0;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.task-checkbox:checked + .task-check-icon {
+  background-color: #48bb78;
+  border-color: #48bb78;
+}
+
+.task-checkbox:checked + .task-check-icon::after {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+/* ========================================
+   タスクテキスト
+======================================== */
+.task-text {
+  flex: 1;
+  font-size: 1rem;
+  color: #2d3748;
+  word-break: break-word;
+}
+
+/* ========================================
+   タスク操作ボタン群
+======================================== */
+.task-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
